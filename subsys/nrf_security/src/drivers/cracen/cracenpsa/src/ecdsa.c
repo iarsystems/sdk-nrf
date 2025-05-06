@@ -266,7 +266,7 @@ static int run_deterministic_ecdsa_hmac_step(const struct sxhashalg *hashalg, si
 
 static int deterministic_ecdsa_hmac(const struct sxhashalg *hashalg, const uint8_t *key,
 				    const uint8_t *v, size_t hash_len,
-				    internal_octet_t internal_octet, const uint8_t *sk,
+				    uint8_t internal_octet, const uint8_t *sk,
 				    const uint8_t *hash, size_t key_len, uint8_t *hmac);
 
 int cracen_ecdsa_sign_digest_deterministic(const struct ecc_priv_key *privkey,

@@ -17,7 +17,7 @@ set_shared(IMAGE ${IMAGE_NAME} PROPERTY ZEPHYR_BINARY_DIR ${ZEPHYR_BINARY_DIR})
 
 function(preprocess_pm_yml in_file out_file)
   execute_process(
-    COMMAND ${CMAKE_C_COMPILER}
+    COMMAND ${CMAKE_DTS_PREPROCESSOR}
     -x assembler-with-cpp
     -nostdinc
     -I${ZEPHYR_BINARY_DIR}/include/generated
