@@ -45,12 +45,14 @@ add_library(oberon_psa_driver STATIC
 # Turn off warnings that Oberon are systematically
 # triggering. Oberon is testing this deliverable before we get it so
 # we don't need to re-test it with gcc warnings.
+if(NOT CMAKE_C_COMPILER_ID STREQUAL "IAR")
 target_compile_options(oberon_psa_driver
   PRIVATE
     -Wno-uninitialized
     -Wno-unused-variable
     -Wno-unused-function
 )
+endif()
 
 # Clang does not support -Wno-maybe-uninitialized so the following
 # warning option is only used for GNU (GCC)

@@ -28,8 +28,8 @@ add_library(cracen_psa_driver STATIC
 # warning
 target_compile_options(cracen_psa_driver
   PRIVATE
-    -Wno-pointer-sign
-    -Wno-unused-function
+    $<$<NOT:$<C_COMPILER_ID:IAR>>:-Wno-pointer-sign>
+    $<$<NOT:$<C_COMPILER_ID:IAR>>:-Wno-unused-function>
 )
 
 target_link_libraries(cracen_psa_driver

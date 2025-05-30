@@ -9,3 +9,4 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(coremark)
 
 target_sources(app PRIVATE src/main.c)
+zephyr_compile_options($<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,optimization_fast>>)

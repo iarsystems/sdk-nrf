@@ -196,8 +196,8 @@ target_link_libraries(${mbedcrypto_target}
 # These can be removed when NCSDK-28901 is addressed.
 target_compile_options(${mbedcrypto_target}
   PRIVATE
-    -Wno-unused-function
-    -Wno-unused-variable
+    $<$<NOT:$<C_COMPILER_ID:IAR>>:-Wno-unused-function>
+    $<$<NOT:$<C_COMPILER_ID:IAR>>:-Wno-unused-variable>
 )
 
 # Add PSA core
