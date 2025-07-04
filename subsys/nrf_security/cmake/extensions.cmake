@@ -149,7 +149,7 @@ macro(nrf_security_add_zephyr_options lib_name)
     # Unsure if these are needed any more
     target_compile_options(${lib_name} PRIVATE ${TOOLCHAIN_C_FLAGS})
   else()
-    target_compile_options(${lib_name} PRIVATE "SHELL: -imacros ${ZEPHYR_AUTOCONF}")
+    target_compile_options(${lib_name} PRIVATE "SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${ZEPHYR_AUTOCONF}")
     target_include_directories(${lib_name} PRIVATE
       $<$<TARGET_EXISTS:nrf_cc3xx_platform>:$<TARGET_PROPERTY:nrf_cc3xx_platform,INTERFACE_INCLUDE_DIRECTORIES>>
     )
@@ -184,7 +184,9 @@ macro(nrf_security_add_zephyr_options_library lib_name)
     # Unsure if these are needed any more
     target_compile_options(${lib_name} PRIVATE ${TOOLCHAIN_C_FLAGS})
   else()
-    target_compile_options(${lib_name} PRIVATE "SHELL: -imacros ${ZEPHYR_AUTOCONF}")
+message(STATUS "imacros: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros>")
+
+    target_compile_options(${lib_name} PRIVATE "SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${ZEPHYR_AUTOCONF}")
     target_include_directories(${lib_name} PRIVATE
       $<$<TARGET_EXISTS:nrf_cc3xx_platform>:$<TARGET_PROPERTY:nrf_cc3xx_platform,INTERFACE_INCLUDE_DIRECTORIES>>
     )

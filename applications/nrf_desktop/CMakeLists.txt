@@ -49,4 +49,12 @@ endif()
 
 if(CONFIG_DESKTOP_CONFIG_CHANNEL_ENABLE)
   zephyr_linker_sources(SECTIONS nrf_desktop.ld)
+  zephyr_linker_section(NAME config_channel_modules KVMA RAM_REGION GROUP RODATA_REGION NOINPUT)
+  zephyr_linker_section_configure(SECTION config_channel_modules
+                                  INPUT "config_channel_modules"
+                                  SYMBOLS __start_config_channel_modules __stop_config_channel_modules
+                                  KEEP SORT NAME)
 endif()
+zephyr_library_include_directories(${NRF_DIR}/include)
+zephyr_library_include_directories(${NRF_DIR}/subsys/app_event_manager)
+zephyr_library_include_directories(${NRF_DIR}/subsys/app_event_manager_profiler_tracer)

@@ -200,7 +200,7 @@ target_compile_options(ot-config INTERFACE
     $<TARGET_PROPERTY:zephyr_interface,INTERFACE_COMPILE_OPTIONS>
     $<TARGET_PROPERTY:compiler,no_builtin>
     $<$<CXX_COMPILER_ID:Clang>:-Wno-c99-extensions>
-    -imacros ${AUTOCONF_H}
+    $<$<COMPILE_LANGUAGE:CXX>:$<TARGET_PROPERTY:compiler,imacros> ${AUTOCONF_H}
 )
 
 # Openthread depends on errno.h, which includes errno_private.h in minimal libc.

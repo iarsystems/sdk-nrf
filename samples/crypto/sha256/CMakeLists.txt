@@ -12,3 +12,5 @@ project(sha256)
 
 target_sources(app PRIVATE
         src/main.c)
+
+zephyr_library_include_directories(${NRF_DIR}/../modules/crypto/mbedtls/include)

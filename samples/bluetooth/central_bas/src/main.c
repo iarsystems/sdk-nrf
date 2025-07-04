@@ -20,7 +20,9 @@
 #include <zephyr/bluetooth/conn.h>
 #include <zephyr/bluetooth/uuid.h>
 #include <zephyr/bluetooth/gatt.h>
+#if CONFIG_BT_GATT_DM
 #include <bluetooth/gatt_dm.h>
+#endif
 #include <bluetooth/scan.h>
 #include <bluetooth/services/bas_client.h>
 #include <dk_buttons_and_leds.h>

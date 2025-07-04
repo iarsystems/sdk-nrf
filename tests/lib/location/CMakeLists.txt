@@ -88,14 +88,14 @@ if (CONFIG_LOCATION_TEST_AGNSS)
 
 target_compile_options(
 	..__nrf__lib__location PRIVATE
-	"SHELL: -imacros ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
-	"SHELL: -imacros ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext_agnss.h"
+	"SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
+	"SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext_agnss.h"
 )
 else()
 
 target_compile_options(
 	..__nrf__lib__location PRIVATE
-	"SHELL: -imacros ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
+	"SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
 )
 endif()
 
@@ -103,6 +103,6 @@ endif()
 # A-GNSS definitions do not distract when using tests without A-GNSS.
 target_compile_options(
 	app PRIVATE
-	"SHELL: -imacros ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
-	"SHELL: -imacros ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext_agnss.h"
+	"SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext.h"
+	"SHELL: $<$<COMPILE_LANGUAGE:C>:$<TARGET_PROPERTY:compiler,imacros> ${PROJECT_SOURCE_DIR}/location_lib_autoconf_ext_agnss.h"
 )
