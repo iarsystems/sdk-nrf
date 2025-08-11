@@ -66,6 +66,7 @@ manifest:
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/introduction/index.html
     # https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/guides/modules.html
     - name: zephyr
+      remote: iar
       repo-path: zephyr-iar
       revision: d02e346e5f1e11133abee3f71ad82bd863e866dd
       import:
